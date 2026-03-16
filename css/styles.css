@@ -185,6 +185,22 @@ body {
   flex: 1;
   min-width: 0;
   overflow: hidden;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.panel-left {
+  background: radial-gradient(ellipse at top left, rgba(220, 38, 38, 0.12) 0%, rgba(220, 38, 38, 0.04) 40%, transparent 70%),
+              radial-gradient(ellipse at bottom right, rgba(127, 29, 29, 0.08) 0%, transparent 60%),
+              var(--surface);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+}
+
+.panel-right {
+  background: radial-gradient(ellipse at top right, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0.04) 40%, transparent 70%),
+              radial-gradient(ellipse at bottom left, rgba(20, 83, 45, 0.08) 0%, transparent 60%),
+              var(--surface);
+  border: 1px solid rgba(34, 197, 94, 0.15);
 }
 
 .panel-center {
@@ -369,57 +385,71 @@ body {
 }
 
 .sq {
-  border-radius: 1px;
+  border-radius: 2px;
   transition: transform 0.15s ease;
+  position: relative;
+}
+
+.sq::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 4px;
+  z-index: -1;
+  opacity: 0.4;
+  filter: blur(4px);
+  background: inherit;
 }
 
 .sq:hover {
   transform: scale(2);
   z-index: 10;
-  position: relative;
 }
 
 /* Lived grid — reds */
 .sq.sq-lived {
-  background: var(--lived);
   cursor: pointer;
 }
 
 .sq.sq-lived.era-0 {
-  background: var(--lived-dim);
+  background: #7f1d1d;
+  box-shadow: 0 4px 8px rgba(127, 29, 29, 0.5);
 }
 
 .sq.sq-lived.era-1 {
   background: #991b1b;
+  box-shadow: 0 4px 8px rgba(153, 27, 27, 0.5);
 }
 
 .sq.sq-lived.era-2 {
-  background: #b91c1c;
+  background: #dc2626;
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.5);
 }
 
 .sq.sq-lived.era-3 {
-  background: var(--lived);
+  background: #ef4444;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.6);
 }
 
 /* Remaining grid — greens */
-.sq.sq-remaining {
-  background: var(--remaining);
-}
-
 .sq.sq-remaining.era-0 {
-  background: var(--remaining);
+  background: #4ade80;
+  box-shadow: 0 4px 12px rgba(74, 222, 128, 0.6);
 }
 
 .sq.sq-remaining.era-1 {
-  background: #16a34a;
+  background: #22c55e;
+  box-shadow: 0 4px 10px rgba(34, 197, 94, 0.5);
 }
 
 .sq.sq-remaining.era-2 {
-  background: var(--remaining-dim);
+  background: #16a34a;
+  box-shadow: 0 4px 8px rgba(22, 163, 74, 0.5);
 }
 
 .sq.sq-remaining.era-3 {
-  background: #052e16;
+  background: #14532d;
+  box-shadow: 0 4px 8px rgba(20, 83, 45, 0.5);
 }
 
 /* Current week — blinking */
